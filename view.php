@@ -19,13 +19,14 @@ $no = 1;
 $view = mysqli_query($koneksi,"SELECT * FROM pegawai");
 while ($a = mysqli_fetch_array($view))
 {
+  $ag = mysqli_fetch_array(mysqli_query($koneksi,"SELECT * FROM agama WHERE id_agama='$a[agama]'"));
 echo "<tr>
         <td>$no</td>
         <td>$a[nama]</td>
         <td>$a[jenis_kelamin]</td>
         <td>$a[alamat]</td>
         <td>$a[no_telepon]</td>
-        <td>$a[agama]</td>
+        <td>$ag[agama]</td>
         <td><a href='edit.php?id=$a[id_pegawai]'>Edit</a> |
         <a href='hapus.php?id=$a[id_pegawai]'>Hapus</a></td>";
       $no++;

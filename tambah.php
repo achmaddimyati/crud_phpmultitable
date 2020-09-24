@@ -1,4 +1,5 @@
 <?php
+include "koneksi.php";
 echo "<center><h1>Form Tambah Pegawai</h1>";
 echo "<form method ='POST' action='insert.php'>";
 echo "<table>
@@ -31,15 +32,12 @@ echo "<table>
           <td>Agama</td>
           <td>:</td>
           <td>
-            <select name='agama'>
-              <option value='0'>-Pilih Agama-</option>
-              <option value='Islam'>Islam</option>
-              <option value='Kristen'>Kristen</option>
-              <option value='Katholik'>Katholik</option>
-              <option value='Hindu'>Hindu</option>
-              <option value='Budha'>Budha</option>
-              <option value='Konghuchu'>Konghuchu</option>
-            </select>
+            <select name='agama'>";
+              $query = mysqli_query($koneksi,"SELECT * FROM agama");
+              while ($a=mysqli_fetch_array($query)) {
+                echo "<option value='$a[id_agama]'>$a[agama]</option>";
+              }
+            echo "</select>
           </td>
         </tr>
 

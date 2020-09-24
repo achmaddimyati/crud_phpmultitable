@@ -46,63 +46,15 @@ echo "<input type='hidden' name='id' value='$id'>
       <td>:</td>
       <td>
         <select name='agama'>";
-        if($edit['agama']=='Islam')
-          {
-            echo "<option value='Islam' selected>Islam</option>
-            <option value='Kristen'>Kristen</option>
-            <option value='Katholik'>Katholik</option>
-            <option value='Hindu'>Hindu</option>
-            <option value='Budha'>Budha</option>
-            <option value='Konghuchu'>Konghuchu</option>";
-          }elseif ($edit['agama']=='Kristen')
-            {
-              echo "<option value='Islam'>Islam</option>
-              <option value='Kristen' selected>Kristen</option>
-              <option value='Katholik'>Katholik</option>
-              <option value='Hindu'>Hindu</option>
-              <option value='Budha'>Budha</option>
-              <option value='Konghuchu'>Konghuchu</option>";
-            }elseif ($edit['agama']=='Katholik')
-              {
-                echo "<option value='Islam'>Islam</option>
-                <option value='Kristen'>Kristen</option>
-                <option value='Katholik' selected>Katholik</option>
-                <option value='Hindu'>Hindu</option>
-                <option value='Budha'>Budha</option>
-                <option value='Konghuchu'>Konghuchu</option>";
-              }elseif ($edit['agama']=='Hindu')
-                {
-                  echo "<option value='Islam'>Islam</option>
-                  <option value='Kristen'>Kristen</option>
-                  <option value='Katholik'>Katholik</option>
-                  <option value='Hindu'selected>Hindu</option>
-                  <option value='Budha'>Budha</option>
-                  <option value='Konghuchu'>Konghuchu</option>";
-                }elseif ($edit['agama']=='Budha')
-                  {
-                    echo "<option value='Islam'>Islam</option>
-                    <option value='Kristen'>Kristen</option>
-                    <option value='Katholik'>Katholik</option>
-                    <option value='Hindu'>Hindu</option>
-                    <option value='Budha'selected>Budha</option>
-                    <option value='Konghuchu'>Konghuchu</option>";
-                  }elseif ($edit['agama']=='Budha')
-                    {
-                      echo "<option value='Islam'>Islam</option>
-                      <option value='Kristen'>Kristen</option>
-                      <option value='Katholik'>Katholik</option>
-                      <option value='Hindu'>Hindu</option>
-                      <option value='Budha'>Budha</option>
-                      <option value='Konghuchu' selected>Konghuchu</option>";
-                    }elseif ($edit['agama']=='0')
-                      {
-                        echo "<option value='Islam'>Islam</option>
-                        <option value='Kristen'>Kristen</option>
-                        <option value='Katholik'>Katholik</option>
-                        <option value='Hindu'>Hindu</option>
-                        <option value='Budha'>Budha</option>
-                        <option value='Konghuchu'>Konghuchu</option>";
-                      }
+        $tampil=mysqli_query($koneksi,"SELECT * FROM agama");
+        while ($ag=mysqli_fetch_array($tampil)) {
+          if ($edit[agama]==$ag[id_agama]) {
+            echo "<option value=$ag[id_agama] selected>$ag[agama]</option>";
+            }
+            else {
+              echo "<option value=$ag[id_agama]>$ag[agama]</option>";
+            }
+        }
         echo "</select>
       </td>
     </tr>
